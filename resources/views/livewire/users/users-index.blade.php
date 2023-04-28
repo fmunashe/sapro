@@ -1,0 +1,76 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                @if(auth()->user()->type ==\App\Enums\UserTypeEnum::ADMIN || auth()->user()->type ==\App\Enums\UserTypeEnum::SUPER_ADMIN) {{ __('Registered Users') }} @else{{ __('My Profile') }} @endif
+            </div>
+        </div>
+
+        @if(auth()->user()->type ==\App\Enums\UserTypeEnum::SUPER_ADMIN ||auth()->user()->type ==\App\Enums\UserTypeEnum::ADMIN )
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" wire:model="search" placeholder="search ..." class="form-control mr-0">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-danger float-start ml-0" wire:click="clearSearch">Clear Search</button>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <a href="{{route('generate-pdf')}}" target="_blank" class="btn btn-success float-start"><i class="uil-cloud-download"></i> Download Users Report</a>
+
+                <a href="" class="btn btn-success float-end" data-bs-toggle="modal"
+                   data-bs-target="#standard-modal"><i class="mdi mdi-pencil-plus"></i> Create User</a>
+            </div>
+        </div>
+        @endif
+
+    </div>
+
+    <div class="card-body text-center">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+        <table class="table table-striped table-sm" style="text-align: left">
+            <tr>
+                <th>#</th>
+                <th>Sapro ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>User Type</th>
+                <th>Action</th>
+            </tr>
+            @foreach($users as $user)
+                <tr>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->saproId}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->surname}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->type}}</td>
+                    <td class="pull-right">
+                        <button class="btn btn-success btn-sm py-0 px-1" data-bs-toggle="modal"
+                                data-bs-target="#show_user_modal_{{$user->id}}">
+                            <i class="uil-eye"></i>&nbsp;Show
+                        </button>
+                        @include('users.show_user_modal')
+                        <button class="btn btn-info btn-sm py-0 px-1" data-bs-toggle="modal"
+                                data-bs-target="#edit_user_modal_{{$user->id}}">
+                            <i class="uil-pen"></i>&nbsp;Edit
+                        </button>
+                        @include('users.edit_user_modal')
+
+                        <button class="btn btn-danger btn-sm py-0 px-1" data-bs-toggle="modal"
+                                data-bs-target="#delete_user_modal_{{$user->id}}">
+                            <i class="uil-trash"></i>&nbsp;Delete
+                        </button>
+                        @include('users.delete_user_modal')
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+        {{$users->links()}}
+    </div>
+</div>
