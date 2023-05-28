@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -38,5 +37,14 @@ class DatabaseSeeder extends Seeder
         $this->call(SoftwareExperienceSeeder::class);
         $this->call(SchedulingSeeder::class);
         $this->call(SectorSeeder::class);
+        $this->call(RequestTypeSeeder::class);
+        $this->call(AssignmentTypeSeeder::class);
+        $this->call(QualificationCategorySeeder::class);
+        $this->call(AdditionalExperienceCategorySeeder::class);
+        $this->call(PriorExperienceRoleSeeder::class);
+        $this->call(CompanySeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(ProvinceSeeder::class);
+        $this->call(CitySeeder::class);
     }
 }

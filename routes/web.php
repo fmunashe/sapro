@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AdditionalExperienceCategoryController;
 use App\Http\Controllers\AdditionalExperienceController;
+use App\Http\Controllers\AssignmentTypeController;
 use App\Http\Controllers\CertificationsAndEducationController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClientRequestController;
 use App\Http\Controllers\ClientRevenueController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContractStatusController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FactExternalClientController;
 use App\Http\Controllers\FirmExperienceController;
 use App\Http\Controllers\FirstTimeAuditClientController;
@@ -14,8 +19,12 @@ use App\Http\Controllers\HostFirmController;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\InternationalExperienceController;
 use App\Http\Controllers\ListedClientController;
+use App\Http\Controllers\PriorExperienceRoleController;
 use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\QualificationCategoryController;
+use App\Http\Controllers\RequestTypeController;
 use App\Http\Controllers\SchedulingController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\SeniorityLevelController;
@@ -71,6 +80,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('achievements', AchievementController::class);
     Route::resource('firm-experience', FirmExperienceController::class);
     Route::resource('additional-experience', AdditionalExperienceController::class);
+    Route::resource('additional-experience-categories', AdditionalExperienceCategoryController::class);
     Route::resource('client-revenue', ClientRevenueController::class);
     Route::resource('first-time-audit-clients', FirstTimeAuditClientController::class);
     Route::resource('host-firms', HostFirmController::class);
@@ -82,6 +92,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('scheduling', SchedulingController::class);
     Route::resource('sectors', SectorController::class);
     Route::resource('client-requests', ClientRequestController::class);
+    Route::resource('request-types',RequestTypeController::class);
+    Route::resource('assignment-types',AssignmentTypeController::class);
+    Route::resource('qualification-categories',QualificationCategoryController::class);
+    Route::resource('prior-experience-roles',PriorExperienceRoleController::class);
+    Route::resource('companies',CompanyController::class);
+    Route::resource('countries',CountryController::class);
+    Route::resource('provinces',ProvinceController::class);
+    Route::resource('cities',CityController::class);
 });
 
 require __DIR__ . '/auth.php';

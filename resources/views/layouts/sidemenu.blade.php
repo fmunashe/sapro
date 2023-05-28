@@ -44,6 +44,69 @@
         </li>
 
         <li class="side-nav-item">
+            <a href="{{route('assignment-types.index')}}" class="side-nav-link">
+                <i class="uil-pen"></i>
+                <span>Assignment Types </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('request-types.index')}}" class="side-nav-link">
+                <i class="uil-traffic-barrier"></i>
+                <span>Request Types </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('qualification-categories.index')}}" class="side-nav-link">
+                <i class="uil-layer-group-slash"></i>
+                <span>Qualification Categories </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('additional-experience-categories.index')}}" class="side-nav-link">
+                <i class="uil-focus-add"></i>
+                <span>Additional Exp Category </span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('prior-experience-roles.index')}}" class="side-nav-link">
+                <i class="uil-exit"></i>
+                <span>Prior Exp Roles</span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('companies.index')}}" class="side-nav-link">
+                <i class="uil-building"></i>
+                <span>Companies</span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('countries.index')}}" class="side-nav-link">
+                <i class="mdi-ski-cross-country"></i>
+                <span>Countries</span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('provinces.index')}}" class="side-nav-link">
+                <i class="mdi-city"></i>
+                <span>Provinces</span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+            <a href="{{route('cities.index')}}" class="side-nav-link">
+                <i class="mdi mdi-home-city"></i>
+                <span>PRO Location</span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
             <a href="{{route('specialisation.index')}}" class="side-nav-link">
                 <i class="uil-graduation-hat"></i>
                 <span>Specialisation </span>

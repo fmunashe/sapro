@@ -5,6 +5,9 @@ namespace App\Observers;
 use App\Models\ClientRequest;
 use App\Models\User;
 use App\Notifications\ClientRequestCreatedNotification;
+use App\Notifications\GoogleChatNotification;
+use Illuminate\Support\Facades\Notification;
+use NotificationChannels\GoogleChat\GoogleChatChannel;
 
 class ClientRequestCreatedObserver
 {
@@ -13,10 +16,14 @@ class ClientRequestCreatedObserver
      */
     public function created(ClientRequest $clientRequest): void
     {
-        $superAdmins = User::query()->SuperAdmin()->get();
-        foreach ($superAdmins as $admin) {
-            $admin->notify(new ClientRequestCreatedNotification($clientRequest, $admin));
-        }
+//        Notification::route(GoogleChatChannel::class,'')
+//            ->notify(new GoogleChatNotification($clientRequest));
+//        $superAdmins = User::query()->SuperAdmin()->get();
+//        foreach ($superAdmins as $admin) {
+////            $admin->notify(new ClientRequestCreatedNotification($clientRequest, $admin));
+////            $admin->notify(new GoogleChatNotification($clientRequest,$admin));
+//
+//        }
     }
 
     /**

@@ -12,6 +12,7 @@ use PDF;
 use \Mpdf\Mpdf as mPDF;
 use Mpdf\Output\Destination;
 use RealRashid\SweetAlert\Facades\Alert;
+use Spatie\Browsershot\Browsershot;
 
 class UsersController extends Controller
 {
@@ -56,6 +57,13 @@ class UsersController extends Controller
         $data = [
             'user' => $user
         ];
+
+//        $view =  view('users.UsersProfile',$data)->render();
+//         Browsershot::html($view)
+////             ->setNpmBinary('/usr/bin/npm')
+//             ->setNodeBinary('/usr/bin/node')
+//             ->save('test.pdf');
+
         $document = new mPDF([
             'mode' => 'utf-8',
             'format' => 'A3',

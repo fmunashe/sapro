@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{$user->name." ". $user->surname." "."CV"}}</title>
     {{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
     <style>
@@ -16,8 +17,6 @@
             max-width: 100%;
             height: 100% !important;
             color: white;
-
-
         }
 
         .left {
@@ -63,9 +62,10 @@
 
         .right-lists {
             font-size: 18px;
-            padding-left: 30px;
+            padding-left: 45px;
             margin-bottom: 10px;
             margin-top: 10px;
+            list-style-image: url({{'assets/images/img_2.png'}})
         }
 
         .right table tr td h1{
