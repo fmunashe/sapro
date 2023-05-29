@@ -22,7 +22,7 @@
                     <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Country') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <input id="country" type="text" class="form-control @error('country') is-invalid @enderror"
-                                  name="country" autocomplete="country" autofocus required>{{ $country->country }}>
+                                  name="country" value="{{ $country->country }}" autocomplete="country" autofocus required>
 
                         @error('country')
                         <span class="invalid-feedback" role="alert">
@@ -33,9 +33,24 @@
                     <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Nationality') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror"
-                                  name="nationality" autocomplete="nationality" autofocus required>{{ $country->nationality }}>
+                                  name="nationality" value="{{ $country->nationality }}" autocomplete="nationality" autofocus required>
 
                         @error('nationality')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('International Experience') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <select id="isInternationalExperience" type="text" class="form-control @error('isInternationalExperience') is-invalid @enderror"
+                                name="isInternationalExperience" value="" autocomplete="isInternationalExperience" autofocus required>
+                            <option value="0" @if($country->isInternationalExperience) selected @endif >No</option>
+                            <option value="1" @if($country->isInternationalExperience) selected @endif>Yes</option>
+                        </select>
+
+                        @error('isInternationalExperience')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

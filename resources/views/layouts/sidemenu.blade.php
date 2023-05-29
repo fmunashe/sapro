@@ -37,88 +37,116 @@
         </li>
 
         <li class="side-nav-item">
-            <a href="{{route('seniority-levels.index')}}" class="side-nav-link">
-                <i class="uil-money-stack"></i>
-                <span>Seniority Levels </span>
+            <a data-bs-toggle="collapse" href="#administrative" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <i class="uil-robot"></i>
+                <span> Administrative Tasks </span>
+                <span class="menu-arrow"></span>
             </a>
+            <div class="collapse" id="administrative">
+                <ul class="side-nav-second-level">
+                    <li class="side-nav-item">
+                        <a href="{{route('seniority-levels.index')}}" class="side-nav-link">
+                            <span>Seniority Levels </span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="{{route('competence-levels.index')}}" class="side-nav-link">
+                            <span>Competence Levels </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('assignment-types.index')}}" class="side-nav-link">
+                            <span>Assignment Types </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('request-types.index')}}" class="side-nav-link">
+                            <span>Request Types </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('qualification-categories.index')}}" class="side-nav-link">
+                            <span>Qualification Categories </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('additional-experience-categories.index')}}" class="side-nav-link">
+                            <span>Additional Exp Category </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('host-firm-configs.index')}}" class="side-nav-link">
+                            <span>Host Firm Configs </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('industry-categories.index')}}" class="side-nav-link">
+                            <span>Industry Categories </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('sector-categories.index')}}" class="side-nav-link">
+                            <span>Sector Categories </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('prior-experience-roles.index')}}" class="side-nav-link">
+                            <span>Prior Exp Roles</span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('companies.index')}}" class="side-nav-link">
+                            <span>Companies</span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('countries.index')}}" class="side-nav-link">
+                            <span>Countries</span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('provinces.index')}}" class="side-nav-link">
+                            <span>Provinces</span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('cities.index')}}" class="side-nav-link">
+                            <span>PRO Location</span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('specialisation.index')}}" class="side-nav-link">
+                            <span>Specialisation </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('contract-status.index')}}" class="side-nav-link">
+                            <span>Contract Status </span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
         </li>
 
-        <li class="side-nav-item">
-            <a href="{{route('assignment-types.index')}}" class="side-nav-link">
-                <i class="uil-pen"></i>
-                <span>Assignment Types </span>
-            </a>
-        </li>
 
-        <li class="side-nav-item">
-            <a href="{{route('request-types.index')}}" class="side-nav-link">
-                <i class="uil-traffic-barrier"></i>
-                <span>Request Types </span>
-            </a>
-        </li>
 
-        <li class="side-nav-item">
-            <a href="{{route('qualification-categories.index')}}" class="side-nav-link">
-                <i class="uil-layer-group-slash"></i>
-                <span>Qualification Categories </span>
-            </a>
-        </li>
 
-        <li class="side-nav-item">
-            <a href="{{route('additional-experience-categories.index')}}" class="side-nav-link">
-                <i class="uil-focus-add"></i>
-                <span>Additional Exp Category </span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{route('prior-experience-roles.index')}}" class="side-nav-link">
-                <i class="uil-exit"></i>
-                <span>Prior Exp Roles</span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{route('companies.index')}}" class="side-nav-link">
-                <i class="uil-building"></i>
-                <span>Companies</span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{route('countries.index')}}" class="side-nav-link">
-                <i class="mdi-ski-cross-country"></i>
-                <span>Countries</span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{route('provinces.index')}}" class="side-nav-link">
-                <i class="mdi-city"></i>
-                <span>Provinces</span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{route('cities.index')}}" class="side-nav-link">
-                <i class="mdi mdi-home-city"></i>
-                <span>PRO Location</span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{route('specialisation.index')}}" class="side-nav-link">
-                <i class="uil-graduation-hat"></i>
-                <span>Specialisation </span>
-            </a>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="{{route('contract-status.index')}}" class="side-nav-link">
-                <i class="uil-file-edit-alt"></i>
-                <span>Contract Status </span>
-            </a>
-        </li>
     @endif
 
     {{--    <li class="side-nav-item">--}}

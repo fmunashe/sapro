@@ -41,6 +41,21 @@
                         @enderror
                     </div>
 
+                    <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('International Experience') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <select id="isInternationalExperience" type="text" class="form-control @error('isInternationalExperience') is-invalid @enderror"
+                                name="isInternationalExperience" value="{{ old('isInternationalExperience') }}" autocomplete="isInternationalExperience" autofocus required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+
+                        @error('isInternationalExperience')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>

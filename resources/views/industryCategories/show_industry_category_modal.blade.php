@@ -8,37 +8,29 @@
  */
 ?>
 
-<div id="show_seniority_modal_{{$level->seniorityLevelId}}" class="modal fade" tabindex="-1" role="dialog"
+<div id="show_industry_category_modal_{{$industryCategory->id}}" class="modal fade" tabindex="-1" role="dialog"
      aria-labelledby="danger-header-modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header modal-colored-header bg-info">
-                <h4 class="modal-title" id="danger-header-modalLabel">Seniority Level Details</h4>
+                <h4 class="modal-title" id="danger-header-modalLabel">Industry Category Details</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
             <div class="modal-body">
-                <table class="table table-sm table-striped">
+                <table class="table table-sm">
                     <tr>
-                        <th>Seniority Level ID :</th>
-                        <td>{{$level->seniorityLevelId}}</td>
-                    </tr>
-                    <tr>
-                        <th>Seniority Level Code :</th>
-                        <td>{{$level->seniorityLevelCode}}</td>
-                    </tr>
-                    <tr>
-                        <th>Seniority Level Description :</th>
-                        <td>{{$level->seniorityLevelDescription}}</td>
+                        <th>Industry Category:</th>
+                        <td>{{$industryCategory->name}}</td>
                     </tr>
                 </table>
 
-                @if(count($level->competences))
+                @if(count($industryCategory->sectorCategories))
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card table-responsive">
                                 <div class="card-header modal-colored-header bg-info">
-                                    <p class="modal-title">Competences <span
-                                            class="float-end">Total:  {{count($level->competences)}}</span>
+                                    <p class="modal-title">Sectors <span
+                                            class="float-end">Total:  {{count($industryCategory->sectorCategories)}}</span>
                                     </p>
                                 </div>
                                 <div class="card-body">
@@ -47,12 +39,12 @@
                                     <table class="table table-sm table-striped">
                                         <tr>
                                             <th>#</th>
-                                            <th>Competence</th>
+                                            <th>Sector</th>
                                         </tr>
-                                        @foreach($level->competences as $competence)
+                                        @foreach($industryCategory->sectorCategories as $sector)
                                             <tr>
-                                                <td>{{++$loop->index}}</td>
-                                                <td>{{$competence->competenceLevel}}</td>
+                                                <td>{{$sector->id}}</td>
+                                                <td>{{$sector->name}}</td>
                                             </tr>
                                         @endforeach
                                     </table>

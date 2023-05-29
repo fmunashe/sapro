@@ -64,6 +64,7 @@ class CountryController extends Controller
         $country->update([
             'country' => $data['country'],
             'nationality' => $data['nationality'],
+            'isInternationalExperience' => $data['isInternationalExperience'],
         ]);
 
 

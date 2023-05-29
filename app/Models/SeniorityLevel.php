@@ -19,4 +19,9 @@ class SeniorityLevel extends Model
     {
         return $this->hasMany(FactExternalClient::class);
     }
+
+    public function competences(): HasMany
+    {
+        return $this->hasMany(CompetenceLevel::class, 'seniorityLevelId');
+    }
 }

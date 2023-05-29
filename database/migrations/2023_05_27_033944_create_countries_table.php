@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('country')->nullable();
             $table->string('nationality')->nullable();
+            $table->string('isInternationalExperience')->default(false)->nullable();
             $table->timestamps();
         });
     }

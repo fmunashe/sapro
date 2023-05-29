@@ -8,11 +8,11 @@
  */
 ?>
 
-<div id="delete_country_modal_{{$country->id}}" class="modal fade" tabindex="-1" role="dialog"
+<div id="delete_host_firm_config_modal_{{$config->id}}" class="modal fade" tabindex="-1" role="dialog"
      aria-labelledby="danger-header-modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="{{route('countries.destroy',[$country->id])}}" method="post" class="m-0">
+            <form action="{{route('host-firm-configs.destroy',[$config->id])}}" method="post" class="m-0">
                 @csrf
                 @method('delete')
                 <div class="modal-header modal-colored-header bg-danger">
@@ -25,19 +25,19 @@
                     <table class="table table-sm table-striped">
                         <tr>
                             <th>ID :</th>
-                            <td>{{$country->id}}</td>
+                            <td>{{$config->id}}</td>
                         </tr>
                         <tr>
-                            <th>Country :</th>
-                            <td>{{$country->country}}</td>
+                            <th>Host Firm :</th>
+                            <td>{{$config->hostFirm}}</td>
                         </tr>
                         <tr>
-                            <th>Nationality :</th>
-                            <td>{{$country->nationality}}</td>
+                            <th>Host Firm Code :</th>
+                            <td>{{$config->code}}</td>
                         </tr>
                         <tr>
-                            <th>Is International Experience :</th>
-                            <td>{{$country->isInternationalExperience?"Yes":"No"}}</td>
+                            <th>Host Country :</th>
+                            <td>{{$config->country->country??""}}</td>
                         </tr>
                     </table>
 

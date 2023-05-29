@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Country;
 
 use App\Models\Country;
+use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
@@ -33,6 +34,11 @@ class CountryIndex extends LivewireDatatable
                 ->searchable()
                 ->filterable()
                 ->label(trans('Nationality')),
+
+            BooleanColumn::name('isInternationalExperience')
+                ->searchable()
+                ->filterable()
+                ->label(trans('International Experience Country')),
 
             Column::callback(['id'], function ($id) {
                 $country = Country::query()->where('id', '=', $id)->first();

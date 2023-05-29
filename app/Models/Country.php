@@ -16,4 +16,9 @@ class Country extends Model
     {
         return $this->hasMany(Province::class, 'country_id', 'id');
     }
+
+    public function hostFirms(): HasMany
+    {
+        return $this->hasMany(HostFirmConfig::class,'country_id','id');
+    }
 }

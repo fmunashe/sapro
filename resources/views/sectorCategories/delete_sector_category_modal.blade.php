@@ -8,11 +8,11 @@
  */
 ?>
 
-<div id="delete_country_modal_{{$country->id}}" class="modal fade" tabindex="-1" role="dialog"
+<div id="delete_sector_category_modal_{{$sectorCategory->id}}" class="modal fade" tabindex="-1" role="dialog"
      aria-labelledby="danger-header-modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="{{route('countries.destroy',[$country->id])}}" method="post" class="m-0">
+            <form action="{{route('sector-categories.destroy',[$sectorCategory->id])}}" method="post" class="m-0">
                 @csrf
                 @method('delete')
                 <div class="modal-header modal-colored-header bg-danger">
@@ -22,22 +22,18 @@
                 <div class="modal-body">
                     <p class="">Please confirm you want to permanently delete this record:</p>
                     <hr>
-                    <table class="table table-sm table-striped">
+                    <table class="table table-sm">
                         <tr>
                             <th>ID :</th>
-                            <td>{{$country->id}}</td>
+                            <td>{{$sectorCategory->id}}</td>
                         </tr>
                         <tr>
-                            <th>Country :</th>
-                            <td>{{$country->country}}</td>
+                            <th>Sector:</th>
+                            <td>{{$sectorCategory->name}}</td>
                         </tr>
                         <tr>
-                            <th>Nationality :</th>
-                            <td>{{$country->nationality}}</td>
-                        </tr>
-                        <tr>
-                            <th>Is International Experience :</th>
-                            <td>{{$country->isInternationalExperience?"Yes":"No"}}</td>
+                            <th>Industry:</th>
+                            <td>{{$sectorCategory->industryCategory->name??""}}</td>
                         </tr>
                     </table>
 
