@@ -24,11 +24,7 @@
                     </tr>
                     <tr>
                         <th>Sector :</th>
-                        <td>{{$sector->sector}}</td>
-                    </tr>
-                    <tr>
-                        <th>Sector Category :</th>
-                        <td>{{$sector->sectorCategory}}</td>
+                        <td>{{$sector->sectorCategories->name??""}}</td>
                     </tr>
                     <tr>
                         <th>Approved :</th>

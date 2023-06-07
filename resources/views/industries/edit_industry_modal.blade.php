@@ -38,10 +38,15 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Industry') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         </div>
-                        <input id="industry" type="text" class="form-control @error('industry') is-invalid @enderror"
-                               name="industry" value="{{ $industry->industry }}" autocomplete="industry" autofocus required>
+                        <select id="industry_category_id" type="text" class="form-control @error('industry_category_id') is-invalid @enderror"
+                                name="industry_category_id" value="{{ old('industry_category_id') }}" autocomplete="industry_category_id" autofocus required>
+                            <option value="">Select</option>
+                            @foreach($industryCategories as $category)
+                                <option value="{{$category->id}}" @if($category->id== $industry->industry_category_id) selected @endif>{{$category->name}}</option>
+                            @endforeach
+                        </select>
 
-                        @error('industry')
+                        @error('industry_category_id')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

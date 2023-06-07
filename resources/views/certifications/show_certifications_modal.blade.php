@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <th>Certifications And Education :</th>
-                        <td>{{$certification->certificationsAndEducation}}</td>
+                        <td>{{$certification->qualificationCategory->qualification??""}}</td>
                     </tr>
                     <tr>
                         <th>Approved :</th>

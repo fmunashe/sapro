@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Certifications;
 
 use App\Enums\UserTypeEnum;
 use App\Models\CertificationsAndEducation;
+use App\Models\QualificationCategory;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
@@ -13,16 +14,18 @@ class CertificationTable extends LivewireDatatable
 {
     public $hideable = "select";
     public $perPage = 5;
-    public $exportable =true;
+    public $exportable = true;
 
     public function builder()
     {
         if (auth()->user()->type == UserTypeEnum::USER) {
-            return CertificationsAndEducation::query()->with(['user'])
+            return CertificationsAndEducation::query()->with(['qualificationCategory', 'user'])
                 ->where('users.saproId', '=', auth()->user()->saproId)
+                ->join('qualification_categories', 'qualification_categories.id', '=', 'certifications_and_education.qualification_category_id')
                 ->leftJoin('users', 'users.saproId', '=', 'certifications_and_education.saproId');
         }
-        return CertificationsAndEducation::query()->with(['user'])
+        return CertificationsAndEducation::query()->with(['qualificationCategory', 'user'])
+            ->join('qualification_categories', 'qualification_categories.id', '=', 'certifications_and_education.qualification_category_id')
             ->leftJoin('users', 'users.saproId', '=', 'certifications_and_education.saproId');
     }
 
@@ -50,7 +53,7 @@ class CertificationTable extends LivewireDatatable
                 ->searchable()
                 ->filterable()
                 ->label('Institute'),
-            Column::name('certificationsAndEducation')
+            Column::name('qualification_categories.qualification')
                 ->searchable()
                 ->filterable()
                 ->label('Certification'),
@@ -70,11 +73,11 @@ class CertificationTable extends LivewireDatatable
                 ->label('Approved By'),
             Column::callback(['certificationsAndEducationId'], function ($id) {
                 $certification = CertificationsAndEducation::query()->where('certificationsAndEducationId', '=', $id)->first();
-                return view('certifications.certificate_action_buttons',
-                    ['certification' => $certification]);
+                $qualifications = QualificationCategory::all();
+                return view('certifications.certificate_action_buttons', compact('qualifications', 'certification'));
             })
                 ->unsortable()
-            ->excludeFromExport(),
+                ->excludeFromExport(),
         ];
     }
 }

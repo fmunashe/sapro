@@ -22,6 +22,7 @@ use App\Http\Controllers\IndustryCategoryController;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\InternationalExperienceController;
 use App\Http\Controllers\ListedClientController;
+use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PriorExperienceRoleController;
 use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
@@ -32,6 +33,7 @@ use App\Http\Controllers\SchedulingController;
 use App\Http\Controllers\SectorCategoryController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\SeniorityLevelController;
+use App\Http\Controllers\SoftwareCategoryController;
 use App\Http\Controllers\SoftwareExperienceController;
 use App\Http\Controllers\SpecialisationController;
 use App\Http\Controllers\UsersController;
@@ -108,6 +110,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('industry-categories', IndustryCategoryController::class);
     Route::resource('sector-categories', SectorCategoryController::class);
     Route::resource('competence-levels', CompetenceLevelController::class);
+    Route::resource('software-categories', SoftwareCategoryController::class);
+    Route::resource('offices', OfficeController::class);
 });
 
 require __DIR__ . '/auth.php';

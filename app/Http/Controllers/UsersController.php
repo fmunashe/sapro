@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContractStatus;
+use App\Models\Country;
+use App\Models\QualificationCategory;
 use App\Models\SeniorityLevel;
 use App\Models\Specialisation;
 use App\Models\User;
@@ -25,7 +27,9 @@ class UsersController extends Controller
         $seniorityLevels = SeniorityLevel::all();
         $specialisations = Specialisation::all();
         $contractStatus = ContractStatus::all();
-        return view('users.index', compact('seniorityLevels', 'specialisations', 'contractStatus'));
+        $nationality = Country::all();
+        $qualifications = QualificationCategory::all();
+        return view('users.index', compact('seniorityLevels', 'specialisations', 'contractStatus','nationality','qualifications'));
     }
 
     /**

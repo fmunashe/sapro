@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSoftwareExperienceRequest;
 use App\Http\Requests\UpdateSoftwareExperienceRequest;
+use App\Models\SoftwareCategory;
 use App\Models\SoftwareExperience;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -16,7 +17,8 @@ class SoftwareExperienceController extends Controller
     {
         $this->authorize('viewAny', SoftwareExperience::class);
         $softwareExperience = SoftwareExperience::query()->paginate(10);
-        return view('softwareExperience.index', compact('softwareExperience'));
+        $softwareCategories = SoftwareCategory::all();
+        return view('softwareExperience.index', compact('softwareExperience', 'softwareCategories'));
     }
 
     /**
@@ -80,7 +82,8 @@ class SoftwareExperienceController extends Controller
         $softwareExperience->update([
             'saproId' => $data['saproId'],
             'level' => $data['level'],
-            'softwareExperience' => $data['softwareExperience']
+//            'softwareExperience' => $data['softwareExperience'],
+            'software_category_id' => $data['software_category_id']
         ]);
 
         Alert::success('', 'Software Experience Successfully Updated');

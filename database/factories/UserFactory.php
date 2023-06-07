@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use App\Enums\UserTypeEnum;
 use App\Models\ContractStatus;
+use App\Models\Country;
+use App\Models\QualificationCategory;
 use App\Models\SeniorityLevel;
 use App\Models\Specialisation;
 use App\Models\User;
@@ -25,6 +27,12 @@ class UserFactory extends Factory
         $specialisationIds = Specialisation::query()->pluck('specialisationId');
         $contractStatusIds = ContractStatus::query()->pluck('contractStatusId');
         $seniorityLevelsIds = SeniorityLevel::query()->pluck('seniorityLevelId');
+        $qualification = QualificationCategory::query()->pluck('qualification');
+        $nationality = Country::query()->pluck('nationality');
+        $years = [];
+        for ($i = 1; $i <= 20; $i++) {
+            $years[] = $i;
+        }
         return [
             'seniorityLevelId' => fake()->randomElement($seniorityLevelsIds),
             'specialisationId' => fake()->randomElement($specialisationIds),
@@ -40,13 +48,14 @@ class UserFactory extends Factory
                 UserTypeEnum::ADMIN
             ]),
             'saproId' => "SAPRO-" . fake()->unique()->randomNumber(3),
+            'yearsOfAudit' => fake()->unique(true)->randomElement($years),
             'saproContractStartDate' => fake()->date(),
             'saproContractEndDate' => fake()->date(),
             'location' => fake()->city(),
-            'nationality' => fake()->country(),
+            'nationality' => fake()->randomElement($nationality),
             'articleFirm' => fake()->company(),
-            'highestQualification' => fake()->word(),
-            'travel' => fake()->sentence(3),
+            'highestQualification' => fake()->randomElement($qualification),
+            'travel' => fake()->randomElement(['Yes','No']),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

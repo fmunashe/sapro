@@ -15,4 +15,14 @@ class SectorCategory extends Model
     {
         return $this->belongsTo(IndustryCategory::class, 'industry_category_id');
     }
+
+    public function sectors(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Sector::class, 'sector_category_id', 'id');
+    }
+
+    public function clientRevenues(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ClientRevenue::class, 'sector_category_id', 'id');
+    }
 }

@@ -37,30 +37,22 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Sector') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         </div>
-                        <input id="sector" type="text" class="form-control @error('sector') is-invalid @enderror"
-                               name="sector" value="{{ old('sector') }}" autocomplete="sector" autofocus required>
+                        <select id="sector_category_id" type="text"
+                                class="form-control @error('sector_category_id') is-invalid @enderror"
+                                name="sector_category_id" value="{{ old('sector_category_id') }}"
+                                autocomplete="sector_category_id" autofocus required>
+                            <option value="">Select</option>
+                            @foreach($sectorCategories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
 
-                        @error('sector')
+                        @error('sector_category_id')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                         @enderror
                     </div>
-
-                    <div class="input-group input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Sector Category') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        </div>
-                        <input id="sectorCategory" type="text" class="form-control @error('sectorCategory') is-invalid @enderror"
-                               name="sectorCategory" value="{{ old('sectorCategory') }}" autocomplete="sectorCategory" autofocus required>
-
-                        @error('sectorCategory')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
-                    </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>

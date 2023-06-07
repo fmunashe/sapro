@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\QualificationCategory;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,10 +19,12 @@ class CertificationsAndEducationFactory extends Factory
     public function definition(): array
     {
         $saproIds = User::query()->pluck('saproId')->unique();
+        $qualifications = QualificationCategory::query()->pluck('id')->unique();
         return [
             'saproId' => fake()->unique(true)->randomElement($saproIds),
             'institute' => fake()->sentence(4),
             'certificationsAndEducation' => fake()->sentence(4),
+            'qualification_category_id' => fake()->unique(true)->randomElement($qualifications),
             'year' => fake()->date
         ];
     }

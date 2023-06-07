@@ -18,4 +18,9 @@ class Sector extends Model
     {
         return $this->belongsTo(User::class, 'saproId', 'saproId');
     }
+
+    public function sectorCategories(): BelongsTo
+    {
+        return $this->belongsTo(SectorCategory::class,'sector_category_id');
+    }
 }

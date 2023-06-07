@@ -57,9 +57,14 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Sector') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </div>
-                <input id="sector" type="text" wire:model="revenue.sector"
-                       class="form-control @error('revenue.sector') is-invalid @enderror"
-                       name="sector" autocomplete="sector" autofocus required>
+                <select id="sector_category_id" type="text" wire:model="revenue.sector_category_id"
+                        class="form-control @error('sector_category_id') is-invalid @enderror"
+                        name="sector_category_id" value="{{ old('sector_category_id') }}" autocomplete="sector_category_id" autofocus required>
+                    <option value="">Select</option>
+                    @foreach($sectorCategories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
 
                 @error('revenue.sector')
                 <span class="invalid-feedback" role="alert">

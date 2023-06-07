@@ -21,10 +21,15 @@ class DatabaseSeeder extends Seeder
         $this->call(SpecialisationSeeder::class);
         $this->call(SeniorityLevelSeeder::class);
         $this->call(ContractStatusSeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(QualificationCategorySeeder::class);
         $this->call(UserSeeder::class);
         $this->call(AchievementSeeder::class);
         $this->call(CertificationsAndEducationSeeder::class);
         $this->call(AdditionalExperienceSeeder::class);
+        $this->call(IndustryCategorySeeder::class);
+        $this->call(SectorCategorySeeder::class);
+        $this->call(SectorSeeder::class);
         $this->call(ClientRevenueSeeder::class);
         $this->call(AuditedWorkSeeder::class);
         $this->call(FirmExperienceSeeder::class);
@@ -34,22 +39,18 @@ class DatabaseSeeder extends Seeder
         $this->call(InternationalExperienceSeeder::class);
         $this->call(ListedClientSeeder::class);
         $this->call(ProfessionalExperienceSeeder::class);
+        $this->call(SoftwareCategorySeeder::class);
         $this->call(SoftwareExperienceSeeder::class);
         $this->call(SchedulingSeeder::class);
-        $this->call(SectorSeeder::class);
         $this->call(RequestTypeSeeder::class);
         $this->call(AssignmentTypeSeeder::class);
-        $this->call(QualificationCategorySeeder::class);
         $this->call(AdditionalExperienceCategorySeeder::class);
         $this->call(PriorExperienceRoleSeeder::class);
         $this->call(CompanySeeder::class);
-        $this->call(CountrySeeder::class);
         $this->call(ProvinceSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(HostFirmConfigSeeder::class);
-        $this->call(IndustryCategorySeeder::class);
-        $this->call(SectorCategorySeeder::class);
         $this->call(CompetenceLevelSeeder::class);
-
+        $this->call(OfficeSeeder::class);
     }
 }

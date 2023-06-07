@@ -18,4 +18,9 @@ class CertificationsAndEducation extends Model
     {
         return $this->belongsTo(User::class, 'saproId', 'saproId');
     }
+
+    public function qualificationCategory(): BelongsTo
+    {
+        return $this->belongsTo(QualificationCategory::class, 'qualification_category_id', 'id');
+    }
 }

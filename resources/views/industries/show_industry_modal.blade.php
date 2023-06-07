@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <th>Industry:</th>
-                        <td>{{$industry->industry}}</td>
+                        <td>{{$industry->industryCategory->name??""}}</td>
                     </tr>
                     <tr>
                         <th>Approved :</th>
@@ -36,7 +36,7 @@
                     </tr>
                     @if(!$industry->approved)
                         <tr>
-                            <th colspan="3"></th>
+                            <th colspan="2"></th>
                             <td>
                                 <form action="{{route('industries.approveIndustry',[$industry->industryId])}}" method="post">
                                     @csrf

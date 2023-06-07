@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Users;
 use App\Enums\UserAvailability;
 use App\Enums\UserTypeEnum;
 use App\Models\ContractStatus;
+use App\Models\Country;
+use App\Models\QualificationCategory;
 use App\Models\SeniorityLevel;
 use App\Models\Specialisation;
 use App\Models\User;
@@ -117,6 +119,10 @@ class UserDatatables extends LivewireDatatable
                 ->searchable()
                 ->filterable()
                 ->label(trans('Article Firm')),
+            Column::name('yearsOFAudit')
+                ->searchable()
+                ->filterable()
+                ->label(trans('Years Of Audit Experience')),
             DateColumn::name('saproContractStartDate')
                 ->searchable()
                 ->filterable()
@@ -165,9 +171,11 @@ class UserDatatables extends LivewireDatatable
 
             Column::callback(['id'], function ($id) {
                 $user = User::query()->where('id', '=', $id)->first();
+                $nationality = Country::all();
+                $qualifications = QualificationCategory::all();
                 return view('users.user_action_buttons',
                     ['user' => $user, 'seniorityLevels' => $this->seniorityLevels, 'contractStatus' => $this->contractStatus,
-                        'specialisations' => $this->specialisations]);
+                        'specialisations' => $this->specialisations,'nationality'=>$nationality,'qualifications'=>$qualifications]);
             })
                 ->unsortable()
             ->excludeFromExport(),

@@ -18,4 +18,9 @@ class Industry extends Model
     {
         return $this->belongsTo(User::class, 'saproId', 'saproId');
     }
+
+    public function industryCategory(): BelongsTo
+    {
+        return $this->belongsTo(IndustryCategory::class);
+    }
 }

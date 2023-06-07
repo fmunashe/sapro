@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\IndustryCategory;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,9 +19,10 @@ class IndustryFactory extends Factory
     public function definition(): array
     {
         $saproIds = User::query()->pluck('saproId')->unique();
+        $categories = IndustryCategory::query()->pluck('id')->unique();
         return [
             'saproId' => fake()->unique(true)->randomElement($saproIds),
-            'industry' => fake()->company(),
+            'industry_category_id' => fake()->unique(true)->randomElement($categories),
         ];
     }
 }

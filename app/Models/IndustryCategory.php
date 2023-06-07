@@ -15,4 +15,9 @@ class IndustryCategory extends Model
     {
         return $this->hasMany(SectorCategory::class, 'industry_category_id');
     }
+
+    public function industries(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Industry::class);
+    }
 }

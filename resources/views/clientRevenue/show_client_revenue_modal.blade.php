@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <th>Sector :</th>
-                        <td>{{$revenue->sector}}</td>
+                        <td>{{$revenue->sectorCategory->name??""}}</td>
                     </tr>
                     <tr>
                         <th>Time On Client :</th>

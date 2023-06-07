@@ -4,6 +4,7 @@ namespace App\Http\Livewire\ClientRevenue;
 
 use App\Enums\UserTypeEnum;
 use App\Models\ClientRevenue;
+use App\Models\SectorCategory;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
@@ -18,11 +19,13 @@ class ClientRevenueTable extends LivewireDatatable
     public function builder()
     {
         if (auth()->user()->type == UserTypeEnum::USER) {
-            return ClientRevenue::query()->with(['user', 'auditedWork'])
+            return ClientRevenue::query()->with(['user', 'auditedWork', 'sectorCategory'])
                 ->where('users.saproId', '=', auth()->user()->saproId)
+                ->join('sector_categories', 'sector_categories.id', '=', 'client_revenues.sector_category_id')
                 ->leftJoin('users', 'users.saproId', '=', 'client_revenues.saproId');
         }
-        return ClientRevenue::query()->with(['user'])
+        return ClientRevenue::query()->with(['user', 'auditedWork', 'sectorCategory'])
+            ->join('sector_categories', 'sector_categories.id', '=', 'client_revenues.sector_category_id')
             ->leftJoin('users', 'users.saproId', '=', 'client_revenues.saproId');
     }
 
@@ -56,9 +59,9 @@ class ClientRevenueTable extends LivewireDatatable
                 ->view('clientRevenue.formatted_revenue')
                 ->label('Revenue'),
 
-            Column::name('sector')
+            Column::name('sector_categories.name')
                 ->searchable()
-                ->filterable()
+                ->filterable($this->sectorCategories)
                 ->label('Sector'),
 
             Column::name('timeOnClient')
@@ -82,11 +85,16 @@ class ClientRevenueTable extends LivewireDatatable
                 ->label('Approved By'),
             Column::callback(['clientRevenueId'], function ($id) {
                 $revenue = ClientRevenue::query()->where('clientRevenueId', '=', $id)->first();
-                return view('clientRevenue.revenue_action_buttons',
-                    ['revenue' => $revenue]);
+                $sectorCategories = SectorCategory::all();
+                return view('clientRevenue.revenue_action_buttons', compact('sectorCategories', 'revenue'));
             })
                 ->unsortable()
                 ->excludeFromExport(),
         ];
+    }
+
+    public function getSectorCategoriesProperty(): \Illuminate\Support\Collection
+    {
+        return SectorCategory::query()->pluck('name');
     }
 }

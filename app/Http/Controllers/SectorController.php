@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSectorRequest;
 use App\Http\Requests\UpdateSectorRequest;
 use App\Models\Sector;
+use App\Models\SectorCategory;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SectorController extends Controller
@@ -16,7 +17,8 @@ class SectorController extends Controller
     {
         $this->authorize('viewAny', Sector::class);
         $sectors = Sector::query()->paginate(10);
-        return view('sectors.index', compact('sectors'));
+        $sectorCategories = SectorCategory::all();
+        return view('sectors.index', compact('sectors', 'sectorCategories'));
     }
 
     /**
@@ -76,11 +78,7 @@ class SectorController extends Controller
     {
         $this->authorize('update', $sector);
         $data = $request->all();
-        $sector->update([
-            'saproId' => $data['saproId'],
-            'sector' => $data['sector'],
-            'sectorCategory' => $data['sectorCategory'],
-        ]);
+        $sector->update($data);
         toast('Sector Successfully Updated', 'success');
         return to_route('sectors.index');
     }

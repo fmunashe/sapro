@@ -4,6 +4,7 @@ namespace App\Http\Livewire\ClientRevenue;
 
 use App\Models\AuditedWork;
 use App\Models\ClientRevenue;
+use App\Models\SectorCategory;
 use Livewire\Component;
 
 class ClientRevenueEdit extends Component
@@ -38,7 +39,8 @@ class ClientRevenueEdit extends Component
 
     public function render()
     {
-        return view('livewire.client-revenue.client-revenue-edit');
+        $sectorCategories =$this->getSectorCategories();
+        return view('livewire.client-revenue.client-revenue-edit',compact('sectorCategories'));
     }
 
     public function updateData()
@@ -78,9 +80,8 @@ class ClientRevenueEdit extends Component
                 'required',
                 'integer'
             ],
-            'revenue.sector' => [
+            'revenue.sector_category_id' => [
                 'required',
-                'string'
             ],
             'revenue.timeOnClient' => [
                 'required'
@@ -95,9 +96,14 @@ class ClientRevenueEdit extends Component
             'revenue.saproId.required' => 'Sapro Id field is required',
             'revenue.saproId.exists' => 'A valid sapro id is required (make sure there is a user with that sapro id)',
             'revenue.mainClient.required' => 'Main client field is required',
-            'revenue.sector.required' => 'Sector field is required',
+            'revenue.sector_category_id.required' => 'Sector field is required',
             'revenue.revenue.required' => 'Revenue field is required',
             'revenue.timeOnClient.required' => 'Time on client field is required',
         ];
+    }
+
+    public function getSectorCategories(): \Illuminate\Database\Eloquent\Collection
+    {
+        return SectorCategory::all();
     }
 }

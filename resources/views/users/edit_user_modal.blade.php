@@ -263,10 +263,15 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Nationality') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 </div>
-                                <input id="nationality" type="text"
+                                <select id="nationality" type="text"
                                        class="form-control @error('nationality') is-invalid @enderror"
                                        name="nationality" value="{{ $user->nationality }}" autocomplete="nationality"
                                        required>
+                                    <option value="">Select</option>
+                                    @foreach($nationality as $nation)
+                                        <option value="{{$nation->nationality}}" @if($user->nationality == $nation->nationality) selected @endif>{{$nation->nationality}}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('nationality')
                                 <span class="invalid-feedback" role="alert">
@@ -295,11 +300,17 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Highest Qualification') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 </div>
-                                <input id="highestQualification" type="text"
+                                <select id="highestQualification" type="text"
                                        class="form-control @error('highestQualification') is-invalid @enderror"
                                        name="highestQualification" value="{{ $user->highestQualification }}"
                                        autocomplete="highestQualification"
                                        required>
+                                    <option value="">Select</option>
+                                    @foreach($qualifications as $qualification)
+                                        <option value="{{$qualification->qualification}}" @if($qualification->qualification == $user->highestQualification) selected @endif>{{$qualification->qualification}}</option>
+                                    @endforeach
+                                </select>
+
 
                                 @error('highestQualification')
                                 <span class="invalid-feedback" role="alert">
@@ -311,10 +322,15 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Travel') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 </div>
-                                <input id="travel" type="text"
+                                <select id="travel" type="text"
                                        class="form-control @error('travel') is-invalid @enderror"
                                        name="travel" value="{{ $user->travel }}" autocomplete="travel"
                                        required>
+                                    <option value="">Select</option>
+                                    <option value="Yes" @if($user->travel == "Yes") selected @endif>Yes</option>
+                                    <option value="No" @if($user->travel == "No") selected @endif>No</option>
+
+                                </select>
 
                                 @error('travel')
                                 <span class="invalid-feedback" role="alert">
@@ -323,8 +339,25 @@
                                 @enderror
                             </div>
 
-                        </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Years of Audit Experience') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <select id="yearsOfAudit" type="text"
+                                        class="form-control @error('yearsOfAudit') is-invalid @enderror"
+                                        name="yearsOfAudit" value="{{ old('yearsOfAudit') }}" autocomplete="yearsOfAudit"
+                                        required>
+                                    <option value="">Select</option>
+                                    @for($i =1; $i<=20; $i++)
+                                        <option value="{{$i}}" @if($i == $user->yearsOfAudit) selected @endif>{{$i ." Years"}}</option>
+                                    @endfor
+                                </select>
+                                @error('yearsOfAudit')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
+                        </div>
                 </div>
                 </div>
                 <div class="modal-footer">

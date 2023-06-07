@@ -37,7 +37,7 @@
                         </tr>
                         <tr>
                             <th>Certifications And Education :</th>
-                            <td>{{$certification->certificationsAndEducation}}</td>
+                            <td>{{$certification->qualification->qualification??""}}</td>
                         </tr>
                     </table>
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\SoftwareExperience;
 
+use App\Enums\SoftwareExperienceLevels;
 use App\Enums\UserTypeEnum;
+use App\Models\SoftwareCategory;
 use App\Models\SoftwareExperience;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Column;
@@ -17,11 +19,13 @@ class SoftwareExperienceTable extends LivewireDatatable
     {
         if (auth()->user()->type == UserTypeEnum::USER) {
             return SoftwareExperience::query()
-                ->with('user')
+                ->with(['softwareCategory', 'user'])
                 ->where('users.saproId', '=', auth()->user()->saproId)
+                ->join('software_categories', 'software_categories.id', '=', 'software_experiences.software_category_id')
                 ->leftJoin('users', 'users.saproId', '=', 'software_experiences.saproId');
         }
-        return SoftwareExperience::query()->with('user')
+        return SoftwareExperience::query()->with(['softwareCategory', 'user'])
+            ->join('software_categories', 'software_categories.id', '=', 'software_experiences.software_category_id')
             ->leftJoin('users', 'users.saproId', '=', 'software_experiences.saproId');
 
     }
@@ -49,14 +53,14 @@ class SoftwareExperienceTable extends LivewireDatatable
                 ->filterable()
                 ->label(trans('Email')),
 
-            Column::name('softwareExperience')
+            Column::name('software_categories.softwareCategory')
                 ->searchable()
-                ->filterable()
+                ->filterable($this->softwareCategories)
                 ->label(trans('Software Experience')),
 
             Column::name('level')
                 ->searchable()
-                ->filterable()
+                ->filterable($this->levels)
                 ->label(trans('Level')),
 
             BooleanColumn::name('approved')
@@ -71,11 +75,27 @@ class SoftwareExperienceTable extends LivewireDatatable
 
             Column::callback(['softwareExperienceId'], function ($id) {
                 $experience = SoftwareExperience::query()->where('softwareExperienceId', '=', $id)->first();
-                return view('softwareExperience.software_experience_action_buttons',
-                    ['experience' => $experience]);
+                $softwareCategories = SoftwareCategory::all();
+                return view('softwareExperience.software_experience_action_buttons',compact('experience','softwareCategories'));
             })
                 ->unsortable()
                 ->excludeFromExport(),
         ];
+    }
+
+    public function getSoftwareCategoriesProperty(): \Illuminate\Support\Collection
+    {
+        return SoftwareCategory::query()->pluck('softwareCategory');
+    }
+
+    public function getLevelsProperty(): array
+    {
+        return [
+            'Beginner',
+            'Intermediate',
+            'Advanced',
+            'Expert',
+        ];
+
     }
 }

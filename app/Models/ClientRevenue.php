@@ -24,4 +24,9 @@ class ClientRevenue extends Model
     {
         return $this->hasMany(AuditedWork::class, 'revenueId', 'clientRevenueId');
     }
+
+    public function sectorCategory(): BelongsTo
+    {
+        return $this->belongsTo(SectorCategory::class, 'sector_category_id', 'id');
+    }
 }

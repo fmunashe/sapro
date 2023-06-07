@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('surname')->nullable();
             $table->string('email')->unique();
             $table->string('saproEmail')->unique()->nullable();
+            $table->integer('yearsOfAudit')->nullable();
             $table->timestamp('email_verified_at')->nullable()->default(now());
             $table->string('password');
             $table->string('saproId')->unique()->nullable();

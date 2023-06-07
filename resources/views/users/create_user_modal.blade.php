@@ -22,134 +22,139 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Name') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            </div>
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}" autocomplete="name" autofocus required>
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Name') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                                       name="name" value="{{ old('name') }}" autocomplete="name" autofocus required>
 
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
-                        </div>
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Surname') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                @enderror
                             </div>
-                            <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror"
-                                   name="surname" value="{{ old('surname') }}" autocomplete="surname" autofocus
-                                   required>
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Surname') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                                <input id="surname" type="text"
+                                       class="form-control @error('surname') is-invalid @enderror"
+                                       name="surname" value="{{ old('surname') }}" autocomplete="surname" autofocus
+                                       required>
 
-                            @error('surname')
-                            <span class="invalid-feedback" role="alert">
+                                @error('surname')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
-                        </div>
-
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Sapro Email Address') }}</span>
+                                @enderror
                             </div>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                   name="email" value="{{ old('email') }}" autocomplete="email" required>
 
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="inputGroup-sizing-sm">{{ __('Sapro Email Address') }}</span>
+                                </div>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                       name="email" value="{{ old('email') }}" autocomplete="email" required>
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
-                        </div>
-
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Personal Email Address') }}</span>
+                                @enderror
                             </div>
-                            <input id="saproEmail" type="email"
-                                   class="form-control @error('saproEmail') is-invalid @enderror"
-                                   name="saproEmail" value="{{ old('saproEmail') }}" autocomplete="saproEmail" required>
 
-                            @error('saproEmail')
-                            <span class="invalid-feedback" role="alert">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="inputGroup-sizing-sm">{{ __('Personal Email Address') }}</span>
+                                </div>
+                                <input id="saproEmail" type="email"
+                                       class="form-control @error('saproEmail') is-invalid @enderror"
+                                       name="saproEmail" value="{{ old('saproEmail') }}" autocomplete="saproEmail"
+                                       required>
+
+                                @error('saproEmail')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
-                        </div>
-
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Sapro ID') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                @enderror
                             </div>
-                            <input id="saproId" type="text" class="form-control @error('saproId') is-invalid @enderror"
-                                   name="saproId" value="{{ old('saproId') }}" autocomplete="saproId">
 
-                            @error('saproId')
-                            <span class="invalid-feedback" role="alert">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Sapro ID') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                                <input id="saproId" type="text"
+                                       class="form-control @error('saproId') is-invalid @enderror"
+                                       name="saproId" value="{{ old('saproId') }}" autocomplete="saproId">
+
+                                @error('saproId')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
-                        </div>
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('User Role') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                @enderror
                             </div>
-                            <select id="type" type="text"
-                                    class="form-control @error('type') is-invalid @enderror" name="type"
-                                    value="{{ old('type') }}" autocomplete="type" autofocus required>
-                                <option value=""></option>
-                                @foreach(\App\Enums\UserTypeEnum::getUserTypes() as $type)
-                                    <option value="{{$type}}">{{$type}}</option>
-                                @endforeach
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('User Role') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                                <select id="type" type="text"
+                                        class="form-control @error('type') is-invalid @enderror" name="type"
+                                        value="{{ old('type') }}" autocomplete="type" autofocus required>
+                                    <option value=""></option>
+                                    @foreach(\App\Enums\UserTypeEnum::getUserTypes() as $type)
+                                        <option value="{{$type}}">{{$type}}</option>
+                                    @endforeach
 
-                            </select>
-                            @error('type')
-                            <span class="invalid-feedback" role="alert">
+                                </select>
+                                @error('type')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
-                        </div>
-
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Location') }}</span>
+                                @enderror
                             </div>
-                            <input id="location" type="text"
-                                   class="form-control @error('location') is-invalid @enderror"
-                                   name="location" value="{{ old('location') }}" autocomplete="location"
-                                   required>
 
-                            @error('location')
-                            <span class="invalid-feedback" role="alert">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Location') }}</span>
+                                </div>
+                                <input id="location" type="text"
+                                       class="form-control @error('location') is-invalid @enderror"
+                                       name="location" value="{{ old('location') }}" autocomplete="location"
+                                       required>
+
+                                @error('location')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
-                        </div>
-
-                        <div class="input-group input-group-sm input-group-merge mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Password') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                @enderror
                             </div>
-                            <input id="password" type="password"
-                                   class="form-control @error('password') is-invalid @enderror" name="password"
-                                   autocomplete="new-password" required>
 
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
+                            <div class="input-group input-group-sm input-group-merge mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Password') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                                <input id="password" type="password"
+                                       class="form-control @error('password') is-invalid @enderror" name="password"
+                                       autocomplete="new-password" required>
+
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
-                        </div>
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
+                                @enderror
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="inputGroup-sizing-sm">{{ __('Confirm Password') }}</span>
+                                </div>
+                                <input id="password-confirm" type="password" class="form-control"
+                                       name="password_confirmation" autocomplete="new-password" required>
                             </div>
-                            <input id="password-confirm" type="password" class="form-control"
-                                   name="password_confirmation" autocomplete="new-password" required>
-                        </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-sm mb-3">
@@ -252,13 +257,16 @@
                             </div>
 
                             <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Nationality') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                </div>
-                                <input id="nationality" type="text"
-                                       class="form-control @error('nationality') is-invalid @enderror"
-                                       name="nationality" value="{{ old('nationality') }}" autocomplete="nationality"
-                                       required>
+                                <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Nationality') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <select id="nationality" type="text"
+                                        class="form-control @error('nationality') is-invalid @enderror"
+                                        name="nationality" value="{{ old('nationality') }}" autocomplete="nationality"
+                                        required>
+                                    <option value="">Select</option>
+                                    @foreach($nationality as $nation)
+                                        <option value="{{$nation->nationality}}">{{$nation->nationality}}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('nationality')
                                 <span class="invalid-feedback" role="alert">
@@ -287,11 +295,17 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Highest Qualification') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 </div>
-                                <input id="highestQualification" type="text"
-                                       class="form-control @error('highestQualification') is-invalid @enderror"
-                                       name="highestQualification" value="{{ old('highestQualification') }}"
-                                       autocomplete="highestQualification"
-                                       required>
+                                <select id="highestQualification" type="text"
+                                        class="form-control @error('highestQualification') is-invalid @enderror"
+                                        name="highestQualification" value="{{ old('highestQualification') }}"
+                                        autocomplete="highestQualification"
+                                        required>
+                                    <option value="">Select</option>
+                                    @foreach($qualifications as $qualification)
+                                        <option
+                                            value="{{$qualification->qualification}}">{{$qualification->qualification}}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('highestQualification')
                                 <span class="invalid-feedback" role="alert">
@@ -303,12 +317,34 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Travel') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 </div>
-                                <input id="travel" type="text"
-                                       class="form-control @error('travel') is-invalid @enderror"
-                                       name="travel" value="{{ old('travel') }}" autocomplete="travel"
-                                       required>
+                                <select id="travel" type="text"
+                                        class="form-control @error('travel') is-invalid @enderror"
+                                        name="travel" value="{{ old('travel') }}" autocomplete="travel"
+                                        required>
+                                    <option value="">Select</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+
+                                </select>
 
                                 @error('travel')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Years of Audit Experience') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <select id="yearsOfAudit" type="text"
+                                        class="form-control @error('yearsOfAudit') is-invalid @enderror"
+                                        name="yearsOfAudit" value="{{ old('yearsOfAudit') }}" autocomplete="yearsOfAudit"
+                                        required>
+                                    <option value="">Select</option>
+                                    @for($i =1; $i<=20; $i++)
+                                        <option value="{{$i}}">{{$i ." Years"}}</option>
+                                    @endfor
+                                </select>
+                                @error('yearsOfAudit')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

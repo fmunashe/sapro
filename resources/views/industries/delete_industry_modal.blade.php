@@ -29,7 +29,7 @@
                         </tr>
                         <tr>
                             <th>Industry:</th>
-                            <td>{{$industry->industry}}</td>
+                            <td>{{$industry->industryCategory->name??""}}</td>
                         </tr>
                         <tr>
                             <th>Approved :</th>

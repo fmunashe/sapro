@@ -74,6 +74,12 @@
                     </li>
 
                     <li class="side-nav-item">
+                        <a href="{{route('software-categories.index')}}" class="side-nav-link">
+                            <span>Software Categories </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
                         <a href="{{route('additional-experience-categories.index')}}" class="side-nav-link">
                             <span>Additional Exp Category </span>
                         </a>
@@ -112,6 +118,12 @@
                     <li class="side-nav-item">
                         <a href="{{route('countries.index')}}" class="side-nav-link">
                             <span>Countries</span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="{{route('offices.index')}}" class="side-nav-link">
+                            <span>Offices</span>
                         </a>
                     </li>
 

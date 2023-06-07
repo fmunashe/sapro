@@ -6,6 +6,7 @@ use App\Enums\UserTypeEnum;
 use App\Http\Requests\StoreCertificationsAndEducationRequest;
 use App\Http\Requests\UpdateCertificationsAndEducationRequest;
 use App\Models\CertificationsAndEducation;
+use App\Models\QualificationCategory;
 use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -18,7 +19,8 @@ class CertificationsAndEducationController extends Controller
     {
         $this->authorize('viewAny', CertificationsAndEducation::class);
         $certifications = CertificationsAndEducation::query()->paginate(10);
-        return view('certifications.index', compact('certifications'));
+        $qualifications = QualificationCategory::all();
+        return view('certifications.index', compact('certifications','qualifications'));
     }
 
     /**

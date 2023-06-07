@@ -1,12 +1,12 @@
 <?php
 
+use App\Models\SoftwareCategory;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('saproId')->nullable();
             $table->string('level')->nullable();
             $table->text('softwareExperience')->nullable();
+            $table->foreignIdFor(SoftwareCategory::class)->nullable()->constrained()->onDelete('cascade');
             $table->boolean('approved')->nullable()->default(false);
             $table->string('approvedBy')->nullable();
             $table->foreign('saproId')->references('saproId')->on('users')->onDelete('cascade');

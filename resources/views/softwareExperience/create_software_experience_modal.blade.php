@@ -37,8 +37,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Level') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         </div>
-                        <input id="level" type="text" class="form-control @error('level') is-invalid @enderror"
-                               name="level" value="{{ old('level') }}" autocomplete="level">
+                        <select id="level" type="text" class="form-control @error('level') is-invalid @enderror"
+                                name="level" autocomplete="level">
+                            <option value="">Select</option>
+                            @foreach(\App\Enums\SoftwareExperienceLevels::getSoftwareExperienceLevels() as $level)
+                                <option value="{{$level}}">{{$level}}</option>
+                            @endforeach
+                        </select>
 
                         @error('level')
                         <span class="invalid-feedback" role="alert">
@@ -49,12 +54,20 @@
 
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Software Experience') }}</span>
+                            <span class="input-group-text"
+                                  id="inputGroup-sizing-sm">{{ __('Software Experience') }}</span>
                         </div>
-                        <input id="softwareExperience" type="text" class="form-control @error('softwareExperience') is-invalid @enderror"
-                               name="softwareExperience" value="{{ old('softwareExperience') }}" autocomplete="softwareExperience" autofocus required>
+                        <select id="software_category_id" type="text"
+                                class="form-control @error('software_category_id') is-invalid @enderror"
+                                name="software_category_id" autocomplete="software_category_id" autofocus required>
+                            <option value="">Select</option>
+                            @foreach($softwareCategories as $softwareCategory)
+                                <option
+                                    value="{{$softwareCategory->id}}">{{$softwareCategory->softwareCategory}}</option>
+                            @endforeach
+                        </select>
 
-                        @error('softwareExperience')
+                        @error('software_category_id')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

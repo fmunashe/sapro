@@ -24,12 +24,12 @@
                         <td>{{$experience->saproId}}</td>
                     </tr>
                     <tr>
-                        <th>Sapro ID :</th>
+                        <th>Level :</th>
                         <td>{{$experience->level}}</td>
                     </tr>
                     <tr>
                         <th>Software Experience :</th>
-                        <td>{{$experience->softwareExperience}}</td>
+                        <td>{{$experience->softwareCategory->softwareCategory??""}}</td>
                     </tr>
                     <tr>
                         <th>Approved :</th>

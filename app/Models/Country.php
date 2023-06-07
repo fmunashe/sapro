@@ -21,4 +21,9 @@ class Country extends Model
     {
         return $this->hasMany(HostFirmConfig::class,'country_id','id');
     }
+
+    public function offices(): HasMany
+    {
+        return $this->hasMany(Office::class);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Industries;
 
 use App\Enums\UserTypeEnum;
 use App\Models\Industry;
+use App\Models\IndustryCategory;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
@@ -17,11 +18,13 @@ class IndustryTable extends LivewireDatatable
     {
         if (auth()->user()->type == UserTypeEnum::USER) {
             return Industry::query()
-                ->with('user')
+                ->with(['industryCategory', 'user'])
                 ->where('users.saproId', '=', auth()->user()->saproId)
+                ->join('industry_categories', 'industry_categories.id', '=', 'industries.industry_category_id')
                 ->leftJoin('users', 'users.saproId', '=', 'industries.saproId');
         }
-        return Industry::query()->with('user')
+        return Industry::query()->with(['industryCategory', 'user'])
+            ->join('industry_categories', 'industry_categories.id', '=', 'industries.industry_category_id')
             ->leftJoin('users', 'users.saproId', '=', 'industries.saproId');
 
     }
@@ -49,9 +52,9 @@ class IndustryTable extends LivewireDatatable
                 ->filterable()
                 ->label(trans('Email')),
 
-            Column::name('industry')
+            Column::name('industry_categories.name')
                 ->searchable()
-                ->filterable()
+                ->filterable($this->industryCategories)
                 ->label(trans('Industry')),
 
             BooleanColumn::name('approved')
@@ -66,11 +69,16 @@ class IndustryTable extends LivewireDatatable
 
             Column::callback(['industryId'], function ($id) {
                 $industry = Industry::query()->where('industryId', '=', $id)->first();
-                return view('industries.industry_action_buttons',
-                    ['industry' => $industry]);
+                $industryCategories = IndustryCategory::all();
+                return view('industries.industry_action_buttons', compact('industry', 'industryCategories'));
             })
                 ->unsortable()
                 ->excludeFromExport(),
         ];
+    }
+
+    public function getIndustryCategoriesProperty()
+    {
+        return IndustryCategory::query()->pluck('name');
     }
 }

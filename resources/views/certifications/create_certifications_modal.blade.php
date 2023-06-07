@@ -62,13 +62,16 @@
                     </div>
 
                     <div class="input-group input-group-sm mb-3">
-                        <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">{{ __('Certification Or Education') }}</span>
-                        </div>
-                        <input id="certificationsAndEducation" type="text" class="form-control @error('certificationsAndEducation') is-invalid @enderror"
-                               name="certificationsAndEducation" value="{{ old('certificationsAndEducation') }}" autocomplete="certificationsAndEducation" required>
+                        <select id="qualification_category_id" type="text" class="form-control @error('qualification_category_id') is-invalid @enderror"
+                                name="qualification_category_id" value="{{ old('qualification_category_id') }}" autocomplete="qualification_category_id" required>
+                            <option value="">Select</option>
+                            @foreach($qualifications as $qualification)
+                                <option value="{{$qualification->id}}">{{$qualification->qualification}}</option>
+                            @endforeach
+                        </select>
 
-                        @error('certificationsAndEducation')
+                        @error('qualification_category_id')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

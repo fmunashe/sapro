@@ -6,11 +6,15 @@ use App\Enums\UserAvailability;
 use App\Enums\UserTypeEnum;
 use App\Models\Achievement;
 use App\Models\ContractStatus;
+use App\Models\Country;
+use App\Models\QualificationCategory;
 use App\Models\SeniorityLevel;
+use App\Models\SoftwareCategory;
 use App\Models\Specialisation;
 use App\Models\User;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+use Mediconesystems\LivewireDatatables\NumberColumn;
 
 class GenericQueryBuilderTable extends LivewireDatatable
 {
@@ -31,7 +35,11 @@ class GenericQueryBuilderTable extends LivewireDatatable
             'hostFirms', 'firstTimeAuditClients', 'clientRevenues', 'industries', 'listedClients', 'sectors'])
             ->leftJoin('specialisations', 'specialisations.specialisationId', '=', 'users.specialisationId')
             ->leftJoin('seniority_levels', 'seniority_levels.seniorityLevelId', '=', 'users.seniorityLevelId')
-            ->leftJoin('contract_statuses', 'contract_statuses.contractStatusId', '=', 'users.contractStatusId');
+            ->leftJoin('contract_statuses', 'contract_statuses.contractStatusId', '=', 'users.contractStatusId')
+            ->leftJoin('certifications_and_education', 'users.saproId', '=', 'certifications_and_education.saproId')
+            ->leftJoin('qualification_categories', 'qualification_categories.id', '=', 'certifications_and_education.qualification_category_id')
+            ->leftJoin('software_experiences', 'software_experiences.saproId', '=', 'users.saproId')
+            ->leftJoin('software_categories', 'software_categories.id', '=', 'software_experiences.software_category_id');
 //            ->leftJoin('achievements','achievements.saproId','=','users.saproId');
     }
 
@@ -40,6 +48,7 @@ class GenericQueryBuilderTable extends LivewireDatatable
         ini_set('memory_limit', '-1');
         return [
             Column::name('saproId')
+                ->searchable()
                 ->filterable()
                 ->label(trans('Sapro ID')),
             Column::name('name')
@@ -78,36 +87,47 @@ class GenericQueryBuilderTable extends LivewireDatatable
                 ->label(trans('Location')),
 
             Column::name('nationality')
-                ->filterable()
+                ->filterable($this->nationality)
                 ->label(trans('Nationality')),
 
             Column::name('highestQualification')
-                ->filterable()
+                ->filterable($this->qualification)
                 ->label(trans('Highest Qualification')),
 
             Column::name('articleFirm')
                 ->filterable()
                 ->label(trans('Article Firm')),
 
+            NumberColumn::name('yearsOfAudit')
+                ->searchable()
+                ->filterable($this->yearsOfAudit)
+                ->label(trans('Years Of Audit Experience')),
+
             Column::name('travel')
-                ->filterable()
+                ->filterable(["Yes", "No"])
                 ->label(trans('Travel')),
 
             Column::name('achievements.achievement')
                 ->filterable()
                 ->view('achievements.display')
                 ->label(trans('Achievements')),
-            Column::name('certificationsAndEducation.certificationsAndEducation')
-                ->filterable()
+            Column::name('qualification_categories.qualification')
+                ->filterable($this->certifications)
                 ->view('certifications.display')
                 ->label(trans('Certifications')),
+
+            Column::name('software_categories.softwareCategory')
+                ->filterable($this->softwares)
+                ->label(trans('Software Experience')),
 
 
             Column::callback(['id'], function ($id) {
                 $user = User::query()->where('id', '=', $id)->first();
+                $nationality = Country::all();
+                $qualifications = QualificationCategory::all();
                 return view('users.user_action_buttons',
                     ['user' => $user, 'seniorityLevels' => $this->seniorityLevels, 'contractStatus' => $this->contractStatus,
-                        'specialisations' => $this->specialisations]);
+                        'specialisations' => $this->specialisations, 'nationality' => $nationality, 'qualifications' => $qualifications]);
             })
                 ->unsortable()
                 ->excludeFromExport(),
@@ -138,5 +158,32 @@ class GenericQueryBuilderTable extends LivewireDatatable
     public function getAvailabilityStatusProperty()
     {
         return [UserAvailability::AVAILABLE, UserAvailability::NOT_AVAILABLE, UserAvailability::PROFILE_UNDER_CONSIDERATION];
+    }
+
+    public function getQualificationProperty()
+    {
+        return QualificationCategory::query()->pluck('qualification');
+    }
+
+    public function getCertificationsProperty()
+    {
+        return QualificationCategory::query()->pluck('qualification');
+    }
+
+    public function getYearsOfAuditProperty()
+    {
+        $years = [];
+        for ($i = 1; $i <= 20; $i++) {
+            $years[] = $i;
+        }
+        return $years;
+    }
+
+    public function getNationalityProperty(){
+        return Country::query()->pluck('nationality');
+    }
+
+    public function getSoftwaresProperty(){
+        return SoftwareCategory::query()->pluck('softwareCategory');
     }
 }

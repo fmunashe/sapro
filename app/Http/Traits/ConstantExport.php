@@ -4,6 +4,7 @@
 namespace app\Http\Traits;
 
 use App\Enums\RequestStatus;
+use App\Enums\SoftwareExperienceLevels;
 use App\Enums\UserTypeEnum;
 use ReflectionClass;
 
@@ -25,6 +26,12 @@ trait ConstantExport
     public static function getRequestStatuses(): array
     {
         $reflection = new ReflectionClass(RequestStatus::class);
+        return $reflection->getConstants();
+    }
+
+    public static function getSoftwareExperienceLevels(): array
+    {
+        $reflection = new ReflectionClass(SoftwareExperienceLevels::class);
         return $reflection->getConstants();
     }
 }

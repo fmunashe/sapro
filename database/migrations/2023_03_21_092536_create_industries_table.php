@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\IndustryCategory;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,6 +17,7 @@ return new class extends Migration
             $table->id('industryId');
             $table->string('saproId')->nullable();
             $table->text('industry')->nullable();
+            $table->foreignIdFor(IndustryCategory::class)->nullable()->constrained()->onDelete('cascade');
             $table->boolean('approved')->nullable()->default(false);
             $table->string('approvedBy')->nullable();
             $table->foreign('saproId')->references('saproId')->on('users')->onDelete('cascade');

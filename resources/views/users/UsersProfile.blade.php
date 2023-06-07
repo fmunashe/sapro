@@ -158,7 +158,7 @@
                 @foreach($user->certificationsAndEducation as $certification)
                     @if($certification->approved)
                     <li>
-                        <span>{{$certification->institute ." , ".$certification->certificationsAndEducation." , ".\Carbon\Carbon::createFromDate($certification->year)->format('Y')}}</span>
+                        <span>{{$certification->institute ." , ".$certification->qualificationcategory->qualification." , ".\Carbon\Carbon::createFromDate($certification->year)->format('Y')}}</span>
                     </li>
                     @endif
 
@@ -209,7 +209,7 @@
                 @foreach($user->softwareExperiences as $software)
                     @if($software->approved)
                     <li>
-                        <span>{{$software->level.": ".$software->softwareExperience}}</span>
+                        <span>{{$software->level.": ".$software->softwareCategory->softwareCategory??""}}</span>
                     </li>
                     @endif
                 @endforeach
@@ -260,7 +260,7 @@
                 <td  style="padding-left: 3%; text-align: start">
                     @foreach($user->industries as $industry)
                         @if($industry->approved)
-                        <span>{{$industry->industry. ", "}}</span>
+                        <span>{{$industry->industryCategory->name . ", "}}</span>
                         @endif
                     @endforeach
                 </td>
@@ -271,7 +271,7 @@
                 <td  style="padding-left: 3%;">
                     @foreach($user->sectors as $sector)
                         @if($sector->approved)
-                        <span>{{$sector->sector. ", "}}</span>
+                        <span>{{$sector->sectorCategories->name. ", "}}</span>
                         @endif
                     @endforeach
                 </td>
@@ -296,7 +296,7 @@
                         <br><br>
                         {{"( +/- $ ".number_format($revenue->revenue,2,'.',',')." )"}}
                     </td>
-                    <td>{{$revenue->sector}}</td>
+                    <td>{{$revenue->sectorCategory->name??""}}</td>
                     <td>{{$revenue->timeOnClient}}</td>
                     <td>
                         <ul style="margin-left: 10px;">

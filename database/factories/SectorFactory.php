@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\SectorCategory;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,9 +19,10 @@ class SectorFactory extends Factory
     public function definition(): array
     {
         $saproIds = User::query()->pluck('saproId')->unique();
+        $sectors = SectorCategory::query()->pluck('id')->unique();
         return [
             'saproId' => fake()->unique(true)->randomElement($saproIds),
-            'sector' => fake()->company(),
+            'sector_category_id' => fake()->unique(true)->randomElement($sectors),
             'sectorCategory' => fake()->company(),
         ];
     }

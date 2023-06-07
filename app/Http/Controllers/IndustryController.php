@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreIndustryRequest;
 use App\Http\Requests\UpdateIndustryRequest;
 use App\Models\Industry;
+use App\Models\IndustryCategory;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class IndustryController extends Controller
@@ -16,7 +17,8 @@ class IndustryController extends Controller
     {
         $this->authorize('viewAny', Industry::class);
         $industries = Industry::query()->paginate(10);
-        return view('industries.index', compact('industries'));
+        $industryCategories = IndustryCategory::all();
+        return view('industries.index', compact('industries', 'industryCategories'));
     }
 
     /**
@@ -79,7 +81,7 @@ class IndustryController extends Controller
         $data = $request->all();
         $industry->update([
             'saproId' => $data['saproId'],
-            'industry' => $data['industry']
+            'industry_category_id' => $data['industry_category_id']
         ]);
         Alert::success('', 'Industry Successfully Updated');
         return to_route('industries.index');

@@ -18,4 +18,9 @@ class SoftwareExperience extends Model
     {
         return $this->belongsTo(User::class, 'saproId', 'saproId');
     }
+
+    public function softwareCategory(): BelongsTo
+    {
+        return $this->belongsTo(SoftwareCategory::class, 'software_category_id', 'id');
+    }
 }
